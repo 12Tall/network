@@ -47,4 +47,19 @@
   - vty：`line vty [0~15]`  
   - 设置密码：`password cisco`  
   - 启用密码登录：`login`  
-  - 全局密码加密：`service password-encryption`
+  - 全局密码加密：`service password-encryption`  
+
+- 显示运行配置：`show r` 显示配置的密码  
+- 进入vty 线路：`line vty 0 [4]`  
+  - 设置登录密码：`password ...`  
+  - 设置权限级别：`privilege level 15`  
+  - 似乎是：***只要输入相对应的密码，就可以直接进入相应的特权级控制台***  
+- 显示正在使用中的控制台和所有连接中的vty 线路：`show users`
+
+
+## CMD 命令  
+
+```bash
+ping 192.168.1.1  
+telnet 192.168.1.1
+```
