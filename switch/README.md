@@ -81,7 +81,20 @@ interface port-channel 1      #进入聚合端口的端口配置模式
 ex
 show interfaces etherchannel          #显示聚合端口信息
 ```
+## 生成树配置  
 
+只做最简单的配置  
+
+```bash
+# 大概是设置优先处理哪个vlan 的信息
+# 因为低优先级的会优先走副主根交换机
+spanning-tree vlan 10 priority 0
+spanning-tree vlan 20 priority 0
+spanning-tree vlan 30 priority 4096
+spanning-tree vlan 40 priority 4096
+```  
+
+![生成树](./img/生成树.png)
 
 ## CMD 命令  
 
