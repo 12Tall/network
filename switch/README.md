@@ -60,7 +60,27 @@
   - 设置为服务器/客户端：`'vtp server' / 'vtp client'`  
   - 设置域名：`vtp domain ...`  
   - 显示vtp 型芯：`show vtp status`  
-  - [VTP 域](https://www.cnblogs.com/cker/p/9626859.html)：缺省方式下，所有Cisco Catalyst交换机都被配置为 VTP 服务器。
+  - [VTP 域](https://www.cnblogs.com/cker/p/9626859.html)：缺省方式下，所有Cisco Catalyst交换机都被配置为 VTP 服务器。  
+
+## 端口聚合  
+
+端口聚合一般用于交换机冗余配置  
+
+所有用于冗余的交换机都需要进行相同的配置：  
+
+```bash
+inte range f0/23-24
+switch mode trunk
+channel-group 1 mode on 
+ex
+port-channel load-balance dst-ip       #按目的IP地址来实现负载均衡
+ex
+show etherchannel summary             #显示以太通道信息
+conf t
+interface port-channel 1      #进入聚合端口的端口配置模式
+ex
+show interfaces etherchannel          #显示聚合端口信息
+```
 
 
 ## CMD 命令  
