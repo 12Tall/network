@@ -54,7 +54,13 @@
   - 设置登录密码：`password ...`  
   - 设置权限级别：`privilege level 15`  
   - 似乎是：***只要输入相对应的密码，就可以直接进入相应的特权级控制台***  
-- 显示正在使用中的控制台和所有连接中的vty 线路：`show users`
+- 显示正在使用中的控制台和所有连接中的vty 线路：`show users`  
+- 显示vlan 信息：`show vlan brief`  
+- vtp 配置：`vlan database`  
+  - 设置为服务器/客户端：`'vtp server' / 'vtp client'`  
+  - 设置域名：`vtp domain ...`  
+  - 显示vtp 型芯：`show vtp status`  
+  - [VTP 域](https://www.cnblogs.com/cker/p/9626859.html)：缺省方式下，所有Cisco Catalyst交换机都被配置为 VTP 服务器。
 
 
 ## CMD 命令  
