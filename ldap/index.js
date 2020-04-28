@@ -1,8 +1,10 @@
 var ldap = require('ldapjs');
 var client = ldap.createClient({
-    url: 'ldap://192.168.137.254:389'
+    url: 'ldap://192.168.243.127:389'
 });
-client.bind('cn=usr1,dc=12tall,dc=com', 'nopswd?', function (err) {
+// 组织单位是ou
+// 组是group?
+client.bind('cn=u01,ou=hr,dc=test,dc=com', 'Test123', function (err) {
     // assert.ifError(err);
     console.log(err)
 });
