@@ -4,4 +4,6 @@
 
 require('@babel/register')
 
-require('./test/decorators.js')
+var route = require('./test/routes');
+
+console.log(route.test)
