@@ -4,6 +4,6 @@
 
 require('@babel/register')
 
-var route = require('./test/routes');
+var route = require('./test/srv');
 
 console.log(route.test)
