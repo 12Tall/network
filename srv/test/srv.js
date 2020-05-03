@@ -2,10 +2,12 @@
  * 程序入口文件
  */
 
- const https = require('https')
+ const https = require('https');
+ const filters = require('./filters')
 
 const Koa = require('koa2');
 const app = new Koa();
+app.use(filters.ip.filter)
 
 app.use(async (ctx,next)=>{
     console.log('req')
