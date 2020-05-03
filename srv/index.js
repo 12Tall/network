@@ -4,5 +4,4 @@
 
 require('@babel/register')
 
-var route = require('./test/srv');
-const clz = require('./test/decorators');
+var route = require('./main');
