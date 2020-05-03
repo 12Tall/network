@@ -5,17 +5,17 @@
  const https = require('https');
  const filters = require('./filters')
  const Router = require('@koa/router')
- var router = new Router();
+ var router = require('./routes');
 
 const Koa = require('koa2');
 const app = new Koa();
 app.use(filters.ip.filter)
 
-router.get('/:id',(ctx,next)=>{
-  ctx.body = ctx.params.id
-})
+// router.get('/:id',(ctx,next)=>{
+//   ctx.body = ctx.params.id
+// })
 
-app.use(router.routes())
+app.use(router)
 /** 
 app.use(async (ctx,next)=>{
     console.log('req')
