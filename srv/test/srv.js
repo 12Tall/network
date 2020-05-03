@@ -4,11 +4,19 @@
 
  const https = require('https');
  const filters = require('./filters')
+ const Router = require('@koa/router')
+ var router = new Router();
 
 const Koa = require('koa2');
 const app = new Koa();
 app.use(filters.ip.filter)
 
+router.get('/:id',(ctx,next)=>{
+  ctx.body = ctx.params.id
+})
+
+app.use(router.routes())
+/** 
 app.use(async (ctx,next)=>{
     console.log('req')
     ctx.body = "hello koa";
@@ -23,6 +31,7 @@ app.use(async (ctx,next)=>{
 app.use(function *(next) {
   this.throw(403)
 });
+**/
 app.listen(3000)
 // 可以同时监听多个端口
 // app.listen(3001)
