@@ -6,6 +6,14 @@
             {
                 "legacy": true
             }
+        ],
+        [
+            "module-resolver",
+            {"root":["./"],
+            "alias":{
+                "@api":"./routers/api",
+                "@entities":"./entities"
+            }}
         ]
     ]
 }
