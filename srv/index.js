@@ -3,5 +3,6 @@
  */
 
 require('@babel/register')
+require('./entities/user')
 
 var route = require('./main');
