@@ -33,15 +33,18 @@ async function create_table() {
 
 async function insert(usr) {
     let res = await pool.query('insert into users set ?', [usr]);
-    console.log(res)
     // [{"fieldCount":0,"affectedRows":1,"insertId":1,"info":"","serverStatus":2,"warningStatus":0},null]
     return res;
 }
 async function update(usr) {
     let res = await pool.query('update users set ? where uid = ?;', [usr,usr.uid]);
-    console.log(res)
+    // [{"fieldCount":0,"affectedRows":1,"insertId":0,"info":"Rows matched: 1  Changed: 1  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":1},null]
+    return res;
+}
+async function select(usr) {
+    let res = await pool.query('select * from users where uid=?', [usr.uid]);
     // [{"fieldCount":0,"affectedRows":1,"insertId":0,"info":"Rows matched: 1  Changed: 1  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":1},null]
     return res;
 }
 
-module.exports = { insert,update }
+module.exports = { insert,update,select }
