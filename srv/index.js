@@ -3,6 +3,16 @@
  */
 
 require('@babel/register')
-require('./entities/user')
 
-var route = require('./main');
+const d = require('./test/decorators')
+
+d.Clz.m1();
+d.Clz.m1();
+d.Clz.m1();
+d.Clz.m1();
+// let c = new d.Clz();
+// c.m1();
+
+// require('./entities/user')
+
+// var route = require('./main');

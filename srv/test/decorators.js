@@ -1,14 +1,26 @@
-function test(v) {
-    return ()=>{
-        console.log(v);
+function test(guid) {
+    console.log("注册方法", guid)
+    return (target, name, descriptor) => {
+        console.log(target, name, descriptor)
+        let origin = target[name];
+        // origin();
+        console.log(123)
+        descriptor.value = function () {
+            console.log('guid');
+            origin();
+        }
+        Object.defineProperty(target, name, descriptor)
     }
 }
 
-@test("class")
 class Clz {
     constructor() {
         this.name = "123";
     }
     @test('fun')
-    ttt(){}
+    static m1() {
+        console.log('origin')
+    }
 }
+
+module.exports = { Clz }
