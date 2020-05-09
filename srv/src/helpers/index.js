@@ -5,7 +5,7 @@ const config = require('@src/config'),
     mysql = require('mysql2/promise');
 
 const dbpool = {
-    mysql: mysql.createConnection(config.my_pool)
+    mysql: mysql.createPool(config.my_pool)
 }
 
 
