@@ -3,8 +3,12 @@
         "experimentalDecorators": true,
         "baseUrl": "./",
         "paths": {
-            "api/*":["routers/api/*"],
-            "entities/*":["entities/*"]
+            "@src/*": [
+                "./src/*"
+            ],
+            "@controller/*": [
+                "./src/controller/*"
+            ]
         }
     }
 }
