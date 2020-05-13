@@ -1,4 +1,4 @@
-const { service, dbpool } = require('@src/helpers');
+const { service, dbpool, Encrypt } = require('@src/helpers');
 
 // 这里增加一个Controller 装饰器，应该能保证接口的唯一性
 class User {
@@ -10,7 +10,10 @@ class User {
     @service()
     static async add(ctx, next) {
         let [res, field] = await dbpool.mysql.execute(`SELECT 1 FROM user WHERE id =2 LIMIT 1`);
-        console.log(res[0]);
+        let s = Encrypt.AES.en(123);
+        console.log(s);
+        console.log(Encrypt.AES.de(s));
+
         console.log('添加用户');
         ctx.body = 'user';
     }

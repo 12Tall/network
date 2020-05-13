@@ -38,5 +38,6 @@ function service(name, guid) {
 
 module.exports = {
     dbpool,
-    service
+    service,
+    Encrypt: require('./encrypt')
 }
