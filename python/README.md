@@ -4,5 +4,16 @@
   - [x] 公网IP  
   - [ ] 管理员权限   
   - [ ] 端口转发(https://gist.github.com/WangYihang/e7d36b744557e4673d2157499f6c6b5e)  
-  - [ ] NAT 挖洞(3389 TCP)  
-  - [ ] 端口复用(https://www.cnblogs.com/zhumengke/articles/11300519.html)，其实只要服务端能主动发消息就行了
+  - [x] NAT 挖洞(3389 TCP): 普通家用路由器都支持NAT，有效时间`5min`(运营商)，建议`30s`   
+  - [x] 端口复用(https://www.cnblogs.com/zhumengke/articles/11300519.html)，其实只要服务端能主动发消息就行了
+
+- 程序结构  
+  - 公网服务器：
+    - 返回被控机器的IP 和端口号  
+    - 记录当前在线的机器`(可选)`  
+  - 被控端：  
+    - 绑定一个固定端口
+    - 定时向公网服务器查询自己的公网IP 和端口号`(维持NAT )`
+    - 将端口流量转发至`3389`  
+  - 主控端：  
+    - 采用`RDP`，连接时`ip:port`
