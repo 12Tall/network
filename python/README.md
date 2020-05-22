@@ -1,9 +1,20 @@
+## Shell  
+
+- [ ] 通过`shell` 的`runas` 参数看能否以管理员权限运行。  
+- [ ] 利用`os.popen` 模块
+
+
+
+------
+
 ## 远控  
+
+端口流量转发时遇到了问题，好像失败了~
 
 - 内网穿透  
   - [x] 公网IP  
   - [ ] 管理员权限   
-  - [ ] 端口转发(https://gist.github.com/WangYihang/e7d36b744557e4673d2157499f6c6b5e)  
+  - [x] 端口转发(https://gist.github.com/WangYihang/e7d36b744557e4673d2157499f6c6b5e)  
   - [x] NAT 挖洞(3389 TCP): 普通家用路由器都支持NAT，有效时间`5min`(运营商)，建议`30s`   
   - [x] 端口复用(https://www.cnblogs.com/zhumengke/articles/11300519.html)，其实只要服务端能主动发消息就行了
 
@@ -21,3 +32,4 @@
 ## 笔记  
 
 - `python` 函数要先定义在使用，除非是在函数中调用，这也是为什么要有`if __name__ == '__main__'` 的原因之一吧。
+- `RDP` 协议中间会两次断开连接
