@@ -15,7 +15,7 @@ def main():
     while True:
         client, addr = server.accept()
         print("[*] Accepted connection from %s:%d" % addr)
-
+        client.setblocking(False)
         handler = threading.Thread(target=client_handler, args=(client, addr))
         handler.start()
 
@@ -23,9 +23,20 @@ def main():
 
 
 def client_handler(client, addr):
-    req = client.recv(1024)
-    client.send(bytes('%s:%d' % addr, encoding='utf-8'))
+    while True:
+        try:
+            response = client.recv(4096)
+            if response != "":
+                print(response)
+            else:
+                print('???')
+                break
+            client.send(("%s:%d" % addr).encode('utf-8'))
+        except:
+            pass
+        # sleep less than 5s
     client.close()
+
 
 
 if __name__ == '__main__':

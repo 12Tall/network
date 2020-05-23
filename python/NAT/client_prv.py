@@ -1,6 +1,7 @@
 import socket
 import select
 import threading
+import time
 
 
 src_port = ('0.0.0.0', 9999)
@@ -9,15 +10,18 @@ BUFFER_SIZE = 8*1024
 
 
 def main():
-    # cli for public API
+    # # cli for public API
     cli = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     cli.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     cli.bind(src_port)
+    server.bind(src_port)
+    cli.connect(('192.168.243.127', 8341))
+    th_cli = CliThread(cli)
+    th_cli.start()
 
     # main srv
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind(src_port)
     server.listen(5)
 
     print('app running...')
@@ -30,8 +34,29 @@ def main():
         th_out = TransThread(cli_out, cli_in)
         th_in.start()
         th_out.start()
+
+        # waiting for thread exist
         th_in.join()
         th_out.join()
+        th_cli.join()
+
+
+class CliThread(threading.Thread):
+    def __init__(self, cli):
+        threading.Thread.__init__(self)
+        self.cli = cli
+
+    def run(self):
+        while True:
+            self.cli.send("ip".encode('utf-8'))
+            response = self.cli.recv(4096)
+            if response != "":
+                print(response)
+            else:
+                # error, maybe remote closed the connection
+                print('???')
+            time.sleep(30)
+        self.cli.close()
 
 
 class TransThread(threading.Thread):
