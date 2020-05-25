@@ -8,8 +8,7 @@
 ------
 
 ## 远控  
-
-- [ ] win10 端口复用失败  
+  
 - [ ] 难以维持长连接。。。
 
 - 内网穿透  
@@ -17,7 +16,7 @@
   - [ ] 管理员权限   
   - [x] 端口转发(https://gist.github.com/WangYihang/e7d36b744557e4673d2157499f6c6b5e)  
   - [x] NAT 挖洞(3389 TCP): 普通家用路由器都支持NAT，有效时间`5min`(运营商)，建议`30s`   
-  - [x] 端口复用(https://www.cnblogs.com/zhumengke/articles/11300519.html)，其实只要服务端能主动发消息就行了
+  - [x] 端口复用(https://www.cnblogs.com/zhumengke/articles/11300519.html)，其实只要服务端能主动发消息就行了。两个socket 不能同时存在。。。
 
 - 程序结构  
   - 公网服务器：

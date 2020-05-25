@@ -15,6 +15,7 @@ def main():
     while True:
         client, addr = server.accept()
         print("[*] Accepted connection from %s:%d" % addr)
+        client.settimeout(180)
         client.setblocking(False)
         handler = threading.Thread(target=client_handler, args=(client, addr))
         handler.start()
@@ -31,12 +32,11 @@ def client_handler(client, addr):
             else:
                 print('???')
                 break
-            client.send(("%s:%d" % addr).encode('utf-8'))
+            client.sendall(("%s:%d" % addr).encode('utf-8'))
         except:
             pass
         # sleep less than 5s
     client.close()
-
 
 
 if __name__ == '__main__':
