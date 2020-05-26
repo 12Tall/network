@@ -15,7 +15,8 @@ def main():
     while True:
         client, addr = server.accept()
         print("[*] Accepted connection from %s:%d" % addr)
-        client.settimeout(180)
+        client.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, True)
+        client.ioctl(socket.SIO_KEEPALIVE_VALS, (1, 25*1000, 5*1000))
         client.setblocking(False)
         handler = threading.Thread(target=client_handler, args=(client, addr))
         handler.start()

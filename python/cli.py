@@ -3,8 +3,9 @@ import time
 import datetime
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.settimeout(300)
-server.connect(("5.199.243.66", 8341))
+server.connect(("192.168.243.129", 8341))
+server.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, True)
+server.ioctl(socket.SIO_KEEPALIVE_VALS, (1, 25*1000, 5*1000))
 server.setblocking(False)
 while True:
     server.sendall("ip".encode('utf-8'))
@@ -17,7 +18,7 @@ while True:
     except:
         pass
     # sleep less than 5s
-    time.sleep(5)
+    time.sleep(60)
 server.close()
 
 # 09 32 54
