@@ -4,20 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon --watch ./src/ -e ts,js --exec ts-node ./src/main.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.10.3",
-    "@babel/plugin-transform-runtime": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
-    "@babel/register": "^7.10.3",
-    "@koa/router": "^9.0.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-runtime": "^6.26.0",
+    "@types/koa": "^2.11.3",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/mysql": "^2.15.14",
     "koa": "^2.9.0",
     "koa-bodyparser": "^4.3.0",
-    "mysql2": "^2.1.0"
+    "koa-router": "^9.0.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.10.2",
+    "typeorm": "^0.2.25",
+    "typescript": "^3.9.5"
   }
 }
