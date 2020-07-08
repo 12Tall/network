@@ -4,36 +4,35 @@ import router from "./router";
 import databases from './config/database'
 import bodyParser from 'koa-bodyparser'
 import jwtKoa from 'koa-jwt'
-import cors from 'koa2-cors'
+import cors from '@koa/cors'
 
-const secret = "koa2 jwt server"
+const secret = "koa2 jwt server",
+    whiteList = ["http://localhost:8081", "http://localhost:3000"];
 createConnections(databases).then(connections => {
     const app = new Koa();
     app.use(cors({
         origin: (ctx) => {
-            // 认证失败也会显示跨域失败
-            const whiteList = ['http://192.168.1.1:3000', 'http://localhost:8080', 'http://127.0.0.1:8081']; //可跨域白名单
-            let referer: string = ctx.request.header.referer;
-            if (referer) {
-                let org = referer.substr(0, referer.length - 1);
-                console.log(whiteList.includes(org))
-                if (whiteList.includes(org)) {
-                    return org;
-                }
+            let origin = ctx.request.header.origin;
+            console.log();
+            if (whiteList.includes(origin)) {
+                return origin;
             }
-
-            return 'http://localhost:3000';
+            return false;
         },
+
         // can be found by js
         exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
         maxAge: 86400,
         credentials: true,
         allowMethods: ["PUT", "POST", "GET", "DELETE", "OPTIONS"],
         allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+        keepHeadersOnError: true
     }));
+
     app.use(bodyParser());
-    app.use(jwtKoa({ secret }).unless({
-        path: [/^\/api\/login/]  // 数组中的路径不需要jwt 验证
+
+    app.use(jwtKoa({ secret, }).unless({
+        path: [/^\/api\/login/]  // 数组中的路径不需要jwt 验证        
     }));
 
 
