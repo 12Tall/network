@@ -1,0 +1,75 @@
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+
+
+@Entity("db88_specimen")
+export class Specimen {
+    @PrimaryGeneratedColumn({ type: "bigint" })
+    id: number = 0;
+
+    @Column({ length: 20 })
+    name: string = "";
+    @Column({ length: 64 })
+    Partner_1: string = "";
+    @Column({ length: 32 })
+    Motion_P1: string = "";
+    @Column({ length: 64 })
+    Partner_2: string = "";
+    @Column({ length: 20 })
+    Motion_P2: string = "";
+    @Column({ length: 20 })
+    Total_Result: string = "";
+    @Column({ length: 20 })
+    Friction: string = "";
+    @Column({ length: 20 })
+    approx_fric: string = "";
+    @Column({ length: 20 })
+    Wear: string = "";
+    @Column({ length: 20 })
+    Reaction_layer: string = "";
+    @Column({ length: 20 })
+    Ra: string = "";
+    @Column({ length: 20 })
+    Rz: string = "";
+    @Column({ length: 20 })
+    Rpk: string = "";
+    @Column({ length: 20 })
+    Rk: string = "";
+    @Column({ length: 20 })
+    Rvk: string = "";
+    @Column({ length: 20 })
+    HV0_5: string = "";
+    @Column({ length: 20 })
+    HV0_3: string = "";
+    @Column({ length: 20 })
+    HRB: string = "";
+    @Column({ length: 20 })
+    HBW: string = "";
+    @Column({ length: 20 })
+    GPa: string = "";
+    @Column({ length: 64 })
+    Test_Type: string = "";
+    @Column({ length: 64 })
+    Oil: string = "";
+    @Column({ length: 20 })
+    Additives: string = "";
+    @Column({ length: 20 })
+    load_N: string = "";
+    @Column({ length: 20 })
+    max_lokal: string = "";
+    @Column({ length: 64 })
+    mean_contact_pressure: string = "";
+    @Column({ length: 20 })
+    Fretting_contact_pressure: string = "";
+    @Column({ length: 64 })
+    max_relative_Velocity: string = "";
+    @Column({ length: 20 })
+    Stribeck: string = "";
+    @Column({ length: 64 })
+    Temperature: string = "";
+    @Column({ length: 20 })
+    specific_lubricant_film_thickness: string = "";
+    @Column({ length: 256 })
+    Source: string = "";
+    @Column({ length: 256 })
+    Remark: string = "";
+}

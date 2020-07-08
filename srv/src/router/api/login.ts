@@ -9,7 +9,7 @@ const verify = util.promisify(jwt.verify) // 解密
 const secret = "koa2 jwt server"
 
 const login = new KoaRouter();
-login.post('/login', async (ctx) => {
+login.post('/', async (ctx) => {
     let info = ctx.request.body;
     if (info && info.name && info.password) {
 
