@@ -1,7 +1,6 @@
 import KoaRouter from "koa-router";
 import jwt from 'jsonwebtoken'
 import util from 'util'
-import User from "../../entity/gogs/user";
 import { GetUserByName } from "../../controller/user_ctrl"
 
 
@@ -19,15 +18,13 @@ login.post('/', async (ctx) => {
             ctx.body = {
                 message: "获取token 成功",
                 code: 1,
-                token: jwt.sign({ name: 123 }, secret, { expiresIn: '1h' })
+                token: jwt.sign({ name: user.lower_name }, secret, { expiresIn: '100m' }),
+                account: { name: user.full_name }
             }
-            return;
+        } else {
+            ctx.throw(401, "Authentication Error");
         }
-        ctx.body = {
-            message: "获取token 失败",
-            code: -1,
-            token: null
-        }
+
     }
 
 });

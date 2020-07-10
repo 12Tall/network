@@ -1,6 +1,6 @@
 import User from "../entity/gogs/user"
 import { getConnection } from "typeorm"
-import GetExprimentsByPage from "./hct/expriment_ctrl";
+import GetExprimentsByPage from "./hct/experiment_ctrl";
 
 export async function GetUserByName(name: string) {
    

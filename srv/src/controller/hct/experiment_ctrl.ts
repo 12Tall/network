@@ -1,4 +1,4 @@
-import { Experiment } from "../../entity/hct/expriment";
+import { Experiment } from "../../entity/hct/experiment";
 import { getConnection } from "typeorm";
 
 

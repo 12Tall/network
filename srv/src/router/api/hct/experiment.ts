@@ -1,5 +1,5 @@
 import KoaRouter from "koa-router";
-import GetExprimentsByPage from "../../../controller/hct/expriment_ctrl";
+import GetExprimentsByPage from "../../../controller/hct/experiment_ctrl";
 
 
 const experiment = new KoaRouter();
