@@ -32,4 +32,5 @@ export default class User {
     ValidatePassword(passwd: string) {
         return this.passwd === crypto.pbkdf2Sync(passwd, this.salt, 10000, 50, "sha256").toString("hex");
     }
+
 }

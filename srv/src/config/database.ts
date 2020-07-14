@@ -10,7 +10,7 @@ const databases: ConnectionOptions[] = [{
     password: 'password',
     database: 'my_db',
     entities: [path.join(__dirname, "/../entity/my_db/") + "*{.js,.ts}"],  // __dirname 永远指向当前目录
-    logging: true, // 开启所有数据库信息打印
+    // logging: true, // 开启所有数据库信息打印
     logger: 'advanced-console', // 高亮字体的打印信息
     extra: {
         connectionLimit: 10, // 连接池最大连接数量, 查阅资料 建议是  core number  * 2 + n 
@@ -25,7 +25,7 @@ const databases: ConnectionOptions[] = [{
     password: 'password',
     database: 'gogs',
     entities: [path.join(__dirname, "/../entity/gogs/") + "*{.js,.ts}"],
-    logging: true, // 开启所有数据库信息打印
+    // logging: true, // 开启所有数据库信息打印
     logger: 'advanced-console', // 高亮字体的打印信息
     extra: {
         connectionLimit: 10, // 连接池最大连接数量, 查阅资料 建议是  core number  * 2 + n 
@@ -40,7 +40,7 @@ const databases: ConnectionOptions[] = [{
     password: 'password',
     database: 'hct',
     entities: [path.join(__dirname, "/../entity/hct/") + "*{.js,.ts}"],
-    logging: true, // 开启所有数据库信息打印
+    // logging: true, // 开启所有数据库信息打印
     logger: 'advanced-console', // 高亮字体的打印信息
     extra: {
         connectionLimit: 10, // 连接池最大连接数量, 查阅资料 建议是  core number  * 2 + n 

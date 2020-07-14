@@ -1,7 +1,7 @@
 import KoaRouter from "koa-router";
 import jwt from 'jsonwebtoken'
 import util from 'util'
-import { GetUserByName } from "../../controller/user_ctrl"
+import { GetUserByName } from "../../controller/admin/user_ctrl"
 
 
 const verify = util.promisify(jwt.verify) // 解密
@@ -13,7 +13,6 @@ login.post('/', async (ctx) => {
     if (info && info.name && info.password) {
 
         let user = await GetUserByName(info.name);
-        console.log(user);
         if (user?.ValidatePassword(info.password)) {
             ctx.body = {
                 message: "获取token 成功",

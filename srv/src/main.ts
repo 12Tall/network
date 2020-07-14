@@ -1,4 +1,4 @@
-import { createConnections } from "typeorm";
+import { createConnections, getConnectionManager, getConnection, } from "typeorm";
 import Koa from "koa";
 import router from "./router";
 import databases from './config/database'
@@ -13,7 +13,6 @@ createConnections(databases).then(connections => {
     app.use(cors({
         origin: (ctx) => {
             let origin = ctx.request.header.origin;
-            console.log();
             if (whiteList.includes(origin)) {
                 return origin;
             }
@@ -36,11 +35,19 @@ createConnections(databases).then(connections => {
     }));
 
 
+
     app.use(router.routes());
 
     app.listen(3000);
 
     console.log("http://localhost:3000")
+
+
 }).catch(error => {
     console.error(error);
 })
+
+
+
+////////////////////////////////////////////////////////////////////////
+
