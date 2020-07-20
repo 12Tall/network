@@ -20,7 +20,7 @@ export async function InsertDepartment(name: string, parentId: number) {
 export async function InsertRootDepartment(name: string) {
     const repo = await getConnection("my_db").getTreeRepository(Department);
     const root = new Department();
-    root.name = "Weichai Power(DE)Science & Technology Innovation Center";
+    root.name = "Science & Technology Innovation Center";
     await repo.save(root);
     return await repo.findTrees();
 }

@@ -17,8 +17,8 @@ export default class User {
     email: string = "";
     @Column({ length: 255 })
     passwd: string = "";
-    @Column({ length: 10 })
-    rands: string = "";
+    // @Column({ length: 10 })
+    // rands: string = "";
     @Column({ length: 10 })
     salt: string = "";
     @Column({ type: "tinyint" })
